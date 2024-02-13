@@ -1,2 +1,2 @@
 # learn-py-3
-python 3 colt steele
+learning python 3 from [colt steele](https://www.udemy.com/course/the-modern-python3-bootcamp/)
