@@ -1,4 +1,4 @@
-import random
+from random import choice
 
 choices = ['rock', 'paper', 'scissors']
 player = 'Player'
@@ -8,9 +8,9 @@ result = None
 print('...rock...')
 print('...paper...')
 print('...scissors...')
-player_choice = input("(enter Player's choice): ")
+player_choice = input("(enter Player's choice): ").lower()
 print('**** Thinking ****\n' * 20)
-bot_choice = random.choice(choices)
+bot_choice = choice(choices)
 
 if (player_choice in choices):
     if player_choice == bot_choice:
