@@ -61,8 +61,10 @@ If you pass as the second argument a 0, Python will raise a ZeroDivisionError,
 so if this function is invoked with a 0 as the value of num2, 
 return the string "Please do not divide by zero"
 """
-def divde(num1, num2):
+def divide(num1, num2):
     try:
-        result = num1 / num2
+        return num1 / num2
     except TypeError:
         return "Please provide two integers or floats"
+    except ZeroDivisionError:
+        return "Please do not divide by zero"
