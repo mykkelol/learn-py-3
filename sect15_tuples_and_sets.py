@@ -21,6 +21,9 @@ Sets
         - example: for num in {1,3,3,7}
     - useful to retrieve uniques
         - example: list(set([1,3,3,7])) = [1,3,7]
+    - sets comprehension
+        - example: {x**2 for x in range(10)}
+        - example: len({char for char in 'sequoia' if char in 'aeiou'}) == 5
 
 Set methods
     - .add(value)
@@ -28,7 +31,6 @@ Set methods
     - .discard(value) - similar to remove but doesn't error
     - .copy()
     - .clear()
-    - .intersection()
     - set1 | set2 - set union between two sets to create a set of unique values; similar to union all
     - set1 & set2 - set intersection between two sets to create a set of common values; similar to inner join
 
