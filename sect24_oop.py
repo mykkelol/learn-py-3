@@ -14,6 +14,10 @@
             - example: class Animal: ... class Cat(Animal)
             - example: isinstanceof(Cat(), Animal) # true
             - example with super(): class Cat(Animal): def __init__: super().__init__(..) # self is passed to base class automatically
+        - polymorphism - object that can take on many (poly) forms (morph) and in py, is commonly used in two scenarios
+            - scenario 1: when same class method works similarly for different classes e.g. len(some_list), len(some_tuple), len(some_str)
+            - example of scenario 1: class Animal: ... def speak() return 'woof'... class Cat(Animal) ... def speak() return 'meow' # in short, it's just a method inherited and overriden by the child class
+            - in short, when using inheritance and a method is difficult to generalize across all classes, use polymorphism to override the parent class' method
         - multiple inheritance - it's possible but rarely used and best practice is to avoid using super
         - class attributes - attributes that differs from instance attributes and can also be defined directly on a class so that it can be shared across all instances of the class and the class itself
         
@@ -31,6 +35,11 @@
     Method Resolution Order (MRO)
         - when classes are created, py sets an MRO, which is the order in which py will look for methods on instances of that class
         - will mostly see in multiple inheritance and there are three ways to see an inherited class' MRO in terminal: instance.__mro__, instance.mro(), help(instance)
+        - example:
+            class A
+            class B(A)
+            class C(A)
+            class D(B,C) # results in D>B>C>A
 
 """
 
@@ -41,6 +50,7 @@
 # the class should have one three methods to access and write a private instance property: status
 # the class should print the username and total likes
 # create class Admin that inherits User with attributes (users_banned, active_admins) and methods (ban_user)
+# the class Admin should leverage polymorphism when Admin logs out
 
 class User:
     active_users = 0
@@ -77,7 +87,7 @@ class User:
     def status(self):
         return self._status
     
-    status.setter
+    @status.setter
     def status(self, status):
         if status == 'banned':
             self._status = status
@@ -104,6 +114,10 @@ class Admin(User):
         user.status = 'banned'
         self._users_banned.append({'user': user, 'reason': reason})
 
+    def logout(self):
+        User.active_users -= 1
+        Admin.active_admins -= 1
+
 reverseBoomer1337 = User('reverseBoomer1337', 49)
 print(reverseBoomer1337)
 reverseBoomer1337.change_username('boomer1337')
@@ -117,6 +131,10 @@ print(x_freakinspreadsheets_x)
 
 im_an_ra2017 = Admin('im_an_ra2017', 70, 'admin')
 print(im_an_ra2017)
+print(x_freakinspreadsheets_x.status)
 im_an_ra2017.ban_user(x_freakinspreadsheets_x, "used x's in names in 2024")
 print(x_freakinspreadsheets_x.status)
-print(x_freakinspreadsheets_x.status)
+print(vars(x_freakinspreadsheets_x))
+print(Admin.active_admins)
+im_an_ra2017.logout()
+print(Admin.active_admins)

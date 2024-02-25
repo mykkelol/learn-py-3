@@ -1,7 +1,5 @@
 """ 
-    - inheritance - ability to define a class (child, sub) that inherits from another class (parent, base)
-        - example: class Animal: ... class Cat(Animal)
-        - example: isinstanceof(Cat(), Animal) # true
+
 
 """
 
