@@ -123,3 +123,24 @@ def compare_generator_v_list(n):
     print(f'sum([num for num in range(n)]) took: {list_time}')
 
 # compare_generator_v_list(100000000) # 2 second diff!
+
+# write two functions, one with gen expression and one with list comprehension, to find a dict within a list and compare performance
+def gen_account(accounts, account_number):
+    return next((a for a in accounts if a['account_number'] == account_number), None)
+
+print(gen_account([
+    { 'account_number': 150720,  'balance': 500},
+    { 'account_number': 150303,  'balance': 1500},
+    { 'account_number': 150415,  'balance': 198802},
+    { 'account_number': 150628,  'balance': 201054},
+], 150415))
+
+def list_account(accounts, account_number):
+    return [a for a in accounts if a['account_number'] == account_number][0]
+
+print(list_account([
+    { 'account_number': 150720,  'balance': 500},
+    { 'account_number': 150303,  'balance': 1500},
+    { 'account_number': 150415,  'balance': 198802},
+    { 'account_number': 150628,  'balance': 201054},
+], 150415))
