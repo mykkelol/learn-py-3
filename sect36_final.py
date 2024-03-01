@@ -136,3 +136,85 @@ def two_oldest_ages(ages):
 def is_odd_string(string):
     from string import ascii_lowercase
     return sum(ascii_lowercase.index(c) + 1 for c in string.lower()) % 2 == 1
+
+#valid_parentheses
+def valid_parentheses(parens):
+    stack = []
+    for c in s:
+        if c == '(':
+            stack.append(c)
+        elif c == ')':
+            if not stack:
+                return False
+            stack.pop()
+    return not stack
+
+#reverse_vowels
+def reverse_vowels(s):
+    vowels = "aeiou"
+    s = list(s)
+    i, j = 0, len(s) - 1
+    while i < j:
+        if s[i].lower() not in vowels:
+            i += 1
+        elif s[j].lower() not in vowels:
+            j -= 1
+        else:
+            s[i], s[j] = s[j], s[i]
+            i += 1
+            j -= 1
+    return "".join(s)
+
+#three_odd_numbers
+def three_odd_numbers(nums):
+    for i, n in enumerate(nums):
+        j = i + 1
+        k = j + 1
+        if k < len(nums) and (nums[i] + nums[j] + nums[k]) % 2 != 0:
+            return True
+    return False
+
+#mode
+def mode(nums):
+    return sorted(set(nums), key=lambda n: nums.count(n))[-1]
+
+#running_average
+def running_average():
+    running_average.accumulator = 0
+    running_average.size = 0
+  
+    def inner(number):
+        running_average.accumulator += number
+        running_average.size += 1
+        return running_average.accumulator / running_average.size
+    
+    return inner
+
+#letter_counter
+def letter_counter(s):
+    letter_counter.s = s.lower()
+    def inner(letter):
+        return letter_counter.s.count(letter.lower())
+    return inner
+
+#once
+def once(fn):
+    fn.executed = False
+    def inner(*args, **kwargs):
+        if not fn.executed:
+            fn.executed = True
+            return fn(*args, **kwargs)
+    return inner
+
+#Next Prime Generator
+def next_prime():
+    num = 2
+    primes = set()
+    while True:
+        for prime in primes:
+            if num % prime == 0:
+                break
+        else:
+            primes.add(num)
+            yield num
+        num += num % 2 + 1
