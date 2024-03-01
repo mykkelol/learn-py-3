@@ -46,7 +46,7 @@ print('lower_reversal(): ', lower_reversal(["Elie", "Tim", "Matt"]))
 
 # create get_n_matrix that accepts an N and returns a NxN matrix of stars
 def get_n_matrix(N): 
-    return [['*' * N for c in range(1,N+1)] for r in range(1,N+1)]
+    return [['*' * N for c in range(N)] for r in range(N)]
 
 print('get_n_matrix(): ', get_n_matrix(3))
 
